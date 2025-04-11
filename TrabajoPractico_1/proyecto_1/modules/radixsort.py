@@ -1,24 +1,3 @@
-# modulo1.py
-
-def burbuja(lista):
-    n = len(lista)
-    for i in range(n):
-        for j in range(0, n - i - 1):
-            if lista[j] > lista[j + 1]:
-                lista[j], lista[j + 1] = lista[j + 1], lista[j]
-    return lista
-
-
-def quicksort(lista):
-    if len(lista) <= 1:
-        return lista
-    pivote = lista[len(lista) // 2]
-    menores = [x for x in lista if x < pivote]
-    iguales = [x for x in lista if x == pivote]
-    mayores = [x for x in lista if x > pivote]
-    return quicksort(menores) + iguales + quicksort(mayores)
-
-
 def counting_sort(lista, exp):
     n = len(lista)
     salida = [0] * n
@@ -49,5 +28,3 @@ def radixsort(lista):
         counting_sort(lista, exp)
         exp *= 10
     return lista
-
-# rr
