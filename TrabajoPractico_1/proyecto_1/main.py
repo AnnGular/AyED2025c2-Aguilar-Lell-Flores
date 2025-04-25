@@ -6,10 +6,11 @@ from modules.radixsort import radixsort
 import matplotlib.pyplot as plt
 
 
-tamaños = list(range(1, 1001))
+tamaños = list(range(1, 1001, 100))
 tiempo_burbuja = []
 tiempo_quicksort = []
 tiempo_radixsort = []
+tiempo_sorted = []
 
 for n in tamaños:
     lista = [random.randint(0, 10000) for _ in range(n)]
@@ -19,26 +20,47 @@ for n in tamaños:
     inicio = time.time()
     burbuja(lista_burbuja)
     final = time.time()
-    tiempo_burbuja=final - inicio
+    tiempo_burbuja.append(final - inicio)
 
     # Quicksort
     lista_quick = lista.copy()
     inicio = time.time()
     quicksort(lista_quick)
     final = time.time()
-    tiempo_quicksort=final - inicio
+    tiempo_quicksort.append(final - inicio)
 
     # Radixsort
     lista_radix = lista.copy()
     inicio = time.time()
     radixsort(lista_radix)
     final = time.time()
-    tiempo_radixsort=final - inicio
+    tiempo_radixsort.append(final - inicio)
+    
+    lista_sorted = lista.copy()
+    inicio = time.time()
+    sorted(lista_sorted)
+    final = time.time()
+    tiempo_sorted.append(final - inicio)
     
     if n == 1000:
-        print(f"Tamaño: {n}, Tiempo Burbuja: {tiempo_burbuja:.6f} segundos")
-        print(f"Tamaño: {n}, Tiempo Quicksort: {tiempo_quicksort:.6f} segundos")
-        print(f"Tamaño: {n}, Tiempo RadixSort: {tiempo_radixsort:.6f} segundos")
+        print(f"Tamaño: {n}, Tiempo Burbuja: {tiempo_burbuja[-1]:.6f} segundos")
+        print(f"Tamaño: {n}, Tiempo Quicksort: {tiempo_quicksort[-1]:.6f} segundos")
+        print(f"Tamaño: {n}, Tiempo RadixSort: {tiempo_radixsort[-1]:.6f} segundos")
+        print(f"Tamaño: {n}, Tiempo Sorted (built-in): {tiempo_sorted[-1]:.6f} segundos")
+        
+plt.figure(figsize=(10, 6))
+plt.plot(tamaños, tiempo_burbuja, label='Burbuja', color='red')
+plt.plot(tamaños, tiempo_quicksort, label='Quicksort', color='blue')
+plt.plot(tamaños, tiempo_radixsort, label='Radixsort', color='green')
+
+plt.xlabel('Tamaño de la lista')
+plt.ylabel('Tiempo de ejecución (segundos)')
+plt.title('Comparación de algoritmos de ordenamiento')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
 
 #Graficas
 # plt.plot(tamaños, tiempo_burbuja, label='Burbuja')
@@ -53,18 +75,18 @@ for n in tamaños:
 
 
 
-plt.figure(figsize=(10, 6))
-plt.plot(tamaños, tiempo_burbuja, label='Burbuja', color='red')
-plt.plot(tamaños, tiempo_quicksort, label='Quicksort', color='blue')
-plt.plot(tamaños, tiempo_radixsort, label='Radixsort', color='green')
+# plt.figure(figsize=(10, 6))
+# plt.plot(tamaños, tiempo_burbuja, label='Burbuja', color='red')
+# plt.plot(tamaños, tiempo_quicksort, label='Quicksort', color='blue')
+# plt.plot(tamaños, tiempo_radixsort, label='Radixsort', color='green')
 
-plt.xlabel('Tamaño de la lista')
-plt.ylabel('Tiempo de ejecución (segundos)')
-plt.title('Comparación de algoritmos de ordenamiento')
-plt.legend()
-plt.grid(True)
-plt.tight_layout()
-plt.show()
+# plt.xlabel('Tamaño de la lista')
+# plt.ylabel('Tiempo de ejecución (segundos)')
+# plt.title('Comparación de algoritmos de ordenamiento')
+# plt.legend()
+# plt.grid(True)
+# plt.tight_layout()
+# plt.show()
 
 
 
