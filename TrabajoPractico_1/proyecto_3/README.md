@@ -39,7 +39,7 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 - Flores Valentina
 - Lell Camila Luciana
 - Aguilar Gonzales Andrea Fernanda
-
+.
 
 ---
 
