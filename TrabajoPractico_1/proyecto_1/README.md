@@ -2,13 +2,12 @@
 
 Breve descripción del proyecto:
 
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
-
+Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite Permite evaluar el rendimiento de Bubble Sort, Quicksort, Radix Sort y la función nativa de Python sorted().
 ---
 ## 🏗Arquitectura General
 
 Explica brevemente cómo está organizado el código (funciones y/o clases)
-
+El código está organizado en funciones que implementan cada algoritmo y una sección de pruebas que genera listas aleatorias, mide tiempos de ejecución y grafica los resultados. Esto permite observar cómo varía el comportamiento de cada algoritmo según el tamaño de la entrada.
 Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
 
 El informe completo está disponible en la carpeta [docs](./docs) del proyecto.

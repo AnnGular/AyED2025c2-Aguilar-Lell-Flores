@@ -2,13 +2,13 @@
 
 Breve descripción del proyecto:
 
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
+Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Se desarrolló el juego de cartas "Guerra" utilizando como base una ListaDobleEnlazada para representar el mazo de cada jugador. Cada carta es un objeto con atributos de valor, palo y visibilidad, y el mazo se modela como una estructura dinámica que permite operaciones eficientes.
 
 ---
 ## 🏗Arquitectura General
 
 Explica brevemente cómo está organizado el código (funciones y/o clases)
-
+El código incluye las clases Carta, Mazo y Juego, con operaciones optimizadas y manejo de excepciones. También se realizaron tests automáticos para verificar el correcto funcionamiento de las estructuras y el juego completo.
 Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
 
 El informe completo está disponible en la carpeta [docs](./docs) del proyecto.

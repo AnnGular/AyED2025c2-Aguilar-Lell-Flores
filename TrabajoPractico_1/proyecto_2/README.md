@@ -2,13 +2,13 @@
 
 Breve descripción del proyecto:
 
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
+Este es un script en el que se comparan algoritmos de ordenamiento. Se implementó una estructura de datos del tipo ListaDobleEnlazada, que permite insertar, extraer, copiar, invertir y concatenar elementos con buena eficiencia.
 
 ---
 ## 🏗Arquitectura General
 
 Explica brevemente cómo está organizado el código (funciones y/o clases)
-
+El código está organizado en una clase que define la estructura y sus métodos principales (insertar, extraer, copiar, invertir, etc.), junto con un bloque de pruebas que mide el rendimiento de estos métodos en listas de distintos tamaños.
 Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
 
 El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
