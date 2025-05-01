@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Aug  9 16:51:54 2022
+
+@author: Cátedra de Algoritmos y Estructura de Datos
+"""
+
 class Carta:
     
     def __init__(self, valor='', palo=''):

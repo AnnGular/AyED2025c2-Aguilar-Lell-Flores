@@ -70,7 +70,7 @@ class ListaDobleEnlazada: #crea una lista con un principio y final, es una lista
         if self.esta_vacia():
             raise Exception("Lista vacía")
 
-        if posicion is None or posicion == -1 or posicion == self.tamanio - 1:
+        if posicion is None or posicion == -1 or posicion == self.tamanio - 1: #para poder aceptar cualquier índicde, incluyendo los negativos
             posicion = self.tamanio - 1
 
         if posicion < 0 or posicion >= self.tamanio:

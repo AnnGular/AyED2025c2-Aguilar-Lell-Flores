@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Sun Aug 21 11:23:53 2022
+
+@author: Cátedra de Algoritmos y Estructura de Datos
+"""
 
 from modules.carta import Carta
 from modules.mazo import Mazo
@@ -9,7 +14,7 @@ class TestMazo(unittest.TestCase):
     def setUp(self):
         self.mazo= Mazo()
 
-    def test_poner_sacar_arriba(self):            #Poner arriba al momento de repartir las cartas, sacar arriba al momento de jugar el turno
+    def test_poner_sacar_arriba(self): #Poner arriba al momento de repartir las cartas, sacar arriba al momento de jugar el turno
         carta1=Carta('5','trebol')
         carta2=Carta('3','corazones')
 
