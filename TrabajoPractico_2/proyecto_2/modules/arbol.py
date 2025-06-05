@@ -254,4 +254,3 @@ class ArbolAVL:
             if nodo.izquierdo and nodo.izquierdo.factor_equilibrio < 0:
                 self.rotar_izquierda(nodo.izquierdo)
             self.rotar_derecha(nodo)
-#hola

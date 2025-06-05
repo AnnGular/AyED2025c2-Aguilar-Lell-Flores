@@ -2,11 +2,18 @@
 
 Breve descripción del proyecto:
 
-Ejemplo:
+Este proyecto presenta un sistema de triaje diseñado para optimizar la atención de pacientes en una sala de emergencias, implementado a través de una cola de prioridad basada en un montículo mínimo (min-heap). La estructura permite gestionar pacientes según su nivel de riesgo, priorizando a aquellos en estado crítico y respetando el orden de llegada en caso de empates.
 ---
 ## 🏗Arquitectura General
 
 Explica brevemente cómo está organizado el código (funciones y/o clases)
+Clases:
+Paciente: Representa a cada paciente con sus atributos, como nombre y nivel de riesgo.
+ColaPrioridad: Implementa la cola de prioridad utilizando un montículo mínimo para gestionar la atención de pacientes.
+Funciones:
+agregar_paciente(): Inserta un nuevo paciente en la cola.
+atender_paciente(): Extrae el paciente con mayor prioridad.
+simular_atencion(): Realiza la simulación del proceso de atención en la sala de emergencias.
 
 Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
 

@@ -2,12 +2,20 @@
 
 Breve descripción del proyecto:
 
-Ejemplo: 
+Este proyecto aborda el envío eficiente de mensajes entre aldeas utilizando palomas mensajeras, modelando la situación como un grafo no dirigido y ponderado. Cada aldea se representa como un vértice y los caminos entre ellas como aristas con distancias como peso. Se implementó el algoritmo de Prim para construir un Árbol de Expansión Mínima (MST), asegurando que todas las aldeas estén conectadas con la menor distancia total y evitando duplicaciones en la propagación del mensaje.
 
 ---
 ## 🏗Arquitectura General
 
 Explica brevemente cómo está organizado el código (funciones y/o clases)
+Clases:
+Grafo: Representa aldeas y conexiones.
+Vertice: Modela cada aldea y sus conexiones.
+MonticuloBinario: Optimiza el algoritmo de Prim.
+Funciones:
+prim(): Genera el Árbol de Expansión Mínima (MST).
+calcular_sumas_distancias(): Calcula el costo total del mensaje.
+bea_propagacion(), mostrar_aldeas_alfabeticamente(): Manejan la propagación del mensaje y visualización de aldeas.
 
 Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
 

@@ -2,12 +2,20 @@
 
 Breve descripción del proyecto:
 
-
+Este proyecto consiste en el diseño de una base de datos para almacenar mediciones de temperatura asociadas a fechas, utilizando un Árbol AVL. Esta estructura jerárquica garantiza que los datos se mantengan ordenados y balanceados, lo que permite realizar búsquedas y consultas por rangos de manera eficiente.
 
 ---
 ## 🏗Arquitectura General
 
 Explica brevemente cómo está organizado el código (funciones y/o clases)
+Clases:
+
+AVL: Implementa el árbol AVL para mantener datos ordenados y balanceados.
+Nodo: Representa cada nodo con una fecha y una temperatura.
+Funciones:
+guardar_temperatura(), devolver_temperatura(), borrar_temperatura(): Manejan inserciones, búsquedas y eliminaciones.
+max_temp_rango(), min_temp_rango(), temp_extremos_rango(): Consultas de temperaturas en rangos.
+devolver_temperaturas(), cantidad_muestras(): Listados y conteos de mediciones.
 
 Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
 
