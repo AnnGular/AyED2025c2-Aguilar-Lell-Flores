@@ -1,5 +1,14 @@
 class NodoArbol:
+    #Nodo de un árbol AVL, almacena clave, valor y relaciones con otros nodos.
+
     def __init__(self, clave, valor, izquierdo=None, derecho=None, padre=None):
+        """Inicializa un nodo con clave, valor y referencias.
+            clave: Clave del nodo.
+            valor: Valor asociado.
+            izquierdo (NodoArbol): Hijo izquierdo.
+            derecho (NodoArbol): Hijo derecho.
+            padre (NodoArbol): Nodo padre.
+        """
         self._clave = clave
         self._valor = valor
         self._izquierdo = izquierdo
@@ -7,83 +16,105 @@ class NodoArbol:
         self._padre = padre
         self._factor_equilibrio = 0
 
-    # Propiedades de acceso
     @property
     def valor(self):
+        """Obtiene el valor del nodo."""
         return self._valor
 
     @valor.setter
     def valor(self, valor):
+        """Establece el valor del nodo."""
         self._valor = valor
 
     @property
     def clave(self):
+        """Obtiene la clave del nodo."""
         return self._clave
 
     @clave.setter
     def clave(self, valor):
+        """Establece la clave del nodo."""
         self._clave = valor
-
 
     @property
     def izquierdo(self):
+        """Obtiene el hijo izquierdo."""
         return self._izquierdo
 
     @izquierdo.setter
     def izquierdo(self, nodo):
+        """Establece el hijo izquierdo."""
         self._izquierdo = nodo
 
     @property
     def derecho(self):
+        """Obtiene el hijo derecho."""
         return self._derecho
 
     @derecho.setter
     def derecho(self, nodo):
+        """Establece el hijo derecho."""
         self._derecho = nodo
 
     @property
     def padre(self):
+        """Obtiene el nodo padre."""
         return self._padre
 
     @padre.setter
     def padre(self, nodo):
+        """Establece el nodo padre."""
         self._padre = nodo
 
     @property
     def factor_equilibrio(self):
+        """Obtiene el factor de equilibrio."""
         return self._factor_equilibrio
 
     @factor_equilibrio.setter
     def factor_equilibrio(self, valor):
+        """Establece el factor de equilibrio."""
         self._factor_equilibrio = valor
 
-    # Métodos de verificación de relaciones
     def tiene_hijo_izquierdo(self):
+        """Verifica si tiene hijo izquierdo."""
         return self.izquierdo is not None
 
     def tiene_hijo_derecho(self):
+        """Verifica si tiene hijo derecho."""
         return self.derecho is not None
 
     def es_hijo_izquierdo(self):
+        """Verifica si es hijo izquierdo de su padre."""
         return self.padre and self.padre.izquierdo == self
 
     def es_hijo_derecho(self):
+        """Verifica si es hijo derecho de su padre."""
         return self.padre and self.padre.derecho == self
 
     def es_raiz(self):
+        """Verifica si es la raíz del árbol."""
         return self.padre is None
 
     def es_hoja(self):
+        """Verifica si es una hoja (sin hijos)."""
         return not (self.derecho or self.izquierdo)
 
     def tiene_alguno_hijo(self):
+        """Verifica si tiene al menos un hijo."""
         return self.derecho or self.izquierdo
 
     def tiene_ambos_hijos(self):
+        """Verifica si tiene ambos hijos."""
         return self.derecho and self.izquierdo
 
-    # Método para reemplazar datos de un nodo
     def reemplazar_datos(self, clave, valor, izquierdo, derecho):
+        """Reemplaza los datos del nodo.
+            clave: Nueva clave.
+            valor: Nuevo valor.
+            izquierdo (NodoArbol): Nuevo hijo izquierdo.
+            derecho (NodoArbol): Nuevo hijo derecho.
+        """
         self.clave = clave
         self.valor = valor
         self.izquierdo = izquierdo
@@ -95,29 +126,38 @@ class NodoArbol:
 
 
 class ArbolAVL:
+    """Árbol AVL balanceado para almacenar pares clave-valor."""
+
     def __init__(self):
+        """Inicializa un árbol AVL vacío."""
         self._raiz = None
         self._tamano = 0
 
-    # Propiedades de acceso para raíz y tamaño
     @property
     def raiz(self):
+        """Obtiene la raíz del árbol."""
         return self._raiz
 
     @raiz.setter
     def raiz(self, nodo):
+        """Establece la raíz del árbol."""
         self._raiz = nodo
 
     @property
     def tamano(self):
+        """Obtiene el número de nodos en el árbol."""
         return self._tamano
 
     @tamano.setter
     def tamano(self, valor):
+        """Establece el número de nodos."""
         self._tamano = valor
 
-    # Métodos de agregar
     def agregar(self, clave, valor):
+        """Inserta un nodo con la clave y valor dados.
+            clave: Clave del nodo
+            valor: Valor asociado.
+        """
         if self.raiz:
             self._agregar(clave, valor, self.raiz)
         else:
@@ -125,6 +165,11 @@ class ArbolAVL:
         self.tamano += 1
 
     def _agregar(self, clave, valor, nodo_actual):
+        """Inserta recursivamente un nodo.
+            clave: Clave del nodo.
+            valor: Valor asociado.
+            nodo_actual (NodoArbol): Nodo actual en la recursión.
+        """
         if clave < nodo_actual.clave:
             if nodo_actual.tiene_hijo_izquierdo():
                 self._agregar(clave, valor, nodo_actual.izquierdo)
@@ -138,11 +183,12 @@ class ArbolAVL:
                 nodo_actual.derecho = NodoArbol(clave, valor, padre=nodo_actual)
                 self.actualizar_equilibrio(nodo_actual.derecho)
 
-    # Métodos de búsqueda
     def buscar(self, clave):
+        """Busca un nodo por su clave"""
         return self._buscar(clave, self.raiz)
 
     def _buscar(self, clave, nodo):
+        """Busca recursivamente un nodo"""
         if nodo is None:
             return None
         if clave == nodo.clave:
@@ -152,13 +198,14 @@ class ArbolAVL:
         else:
             return self._buscar(clave, nodo.derecho)
 
-    # Métodos de eliminación
     def eliminar(self, clave):
+        """Elimina un nodo por su clave"""
         nodo_eliminado = self._eliminar(clave, self.raiz)
         if nodo_eliminado is not None:
             self.tamano -= 1
 
     def _eliminar(self, clave, nodo):
+        """Elimina recursivamente un nodo, clave es la clave del nodo a eliminar"""
         if nodo is None:
             return None
         if clave < nodo.clave:
@@ -178,12 +225,13 @@ class ArbolAVL:
         return nodo
 
     def _minimo(self, nodo):
+        """Encuentra el nodo con la clave mínima en un subárbol."""
         if nodo is None or nodo.izquierdo is None:
             return nodo
         return self._minimo(nodo.izquierdo)
 
-    # Métodos de balanceo
     def actualizar_equilibrio(self, nodo):
+        """Actualiza el factor de equilibrio tras una inserción"""
         if nodo.factor_equilibrio > 1 or nodo.factor_equilibrio < -1:
             self.reequilibrar(nodo)
             return
@@ -196,6 +244,7 @@ class ArbolAVL:
                 self.actualizar_equilibrio(nodo.padre)
 
     def actualizar_equilibrio_post_eliminacion(self, nodo):
+        """Actualiza el factor de equilibrio tras una eliminación"""
         if nodo.factor_equilibrio > 1 or nodo.factor_equilibrio < -1:
             self.reequilibrar(nodo)
             return
@@ -207,8 +256,8 @@ class ArbolAVL:
             if nodo.padre.factor_equilibrio != 0:
                 self.actualizar_equilibrio_post_eliminacion(nodo.padre)
 
-    # Rotaciones
     def rotar_izquierda(self, rot_raiz):
+        """Realiza una rotación izquierda """
         nueva_raiz = rot_raiz.derecho
         rot_raiz.derecho = nueva_raiz.izquierdo
         if nueva_raiz.izquierdo:
@@ -227,6 +276,7 @@ class ArbolAVL:
         nueva_raiz.factor_equilibrio += 1 + max(rot_raiz.factor_equilibrio, 0)
 
     def rotar_derecha(self, rot_raiz):
+        """Realiza una rotación derecha """
         nueva_raiz = rot_raiz.izquierdo
         rot_raiz.izquierdo = nueva_raiz.derecho
         if nueva_raiz.derecho:
@@ -244,8 +294,8 @@ class ArbolAVL:
         rot_raiz.factor_equilibrio -= 1 + max(nueva_raiz.factor_equilibrio, 0)
         nueva_raiz.factor_equilibrio -= 1 + min(rot_raiz.factor_equilibrio, 0)
 
-    # Reequilibración
     def reequilibrar(self, nodo):
+        """Reequilibra el árbol en un nodo desbalanceado."""
         if nodo.factor_equilibrio < 0:
             if nodo.derecho and nodo.derecho.factor_equilibrio > 0:
                 self.rotar_derecha(nodo.derecho)

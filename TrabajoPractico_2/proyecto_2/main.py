@@ -1,10 +1,11 @@
 from modules.temperaturas import TemperaturasDB
 
 def main():
-    # Crear una instancia de la base de datos de temperaturas
+    """Prueba las operaciones de TemperaturasDB con un conjunto de mediciones."""
+    # Crear base de datos
     db = TemperaturasDB()
 
-    # Guardar algunas temperaturas
+    # Insertar mediciones
     db.guardar_temperatura(25.5, "01/01/2024")
     db.guardar_temperatura(30.2, "02/01/2024")
     db.guardar_temperatura(15.8, "03/01/2024")
@@ -16,33 +17,28 @@ def main():
     db.guardar_temperatura(29.4, "09/01/2024")
     db.guardar_temperatura(35.6, "10/01/2024")
 
-    # Devolver la temperatura de una fecha específica
+    # Consultar temperatura específica
     print("Temperatura del 03/01/2024:", db.devolver_temperatura("03/01/2024"))
 
-    # Obtener la temperatura máxima en un rango
+    # Consultar máximas y mínimas en rango
     print("Temperatura máxima del 01/01/2024 al 10/01/2024:", db.max_temp_rango("01/01/2024", "10/01/2024"))
-
-    # Obtener la temperatura mínima en un rango
     print("Temperatura mínima del 01/01/2024 al 10/01/2024:", db.min_temp_rango("01/01/2024", "10/01/2024"))
 
-    # Obtener temperaturas extremas en un rango
+    # Consultar extremos en rango
     min_temp, max_temp = db.temp_extremos_rango("01/01/2024", "10/01/2024")
-    print("Temperatura mínima y máxima del 01/01/2024 al 10/01/2024:", min_temp, "ºC,", max_temp, "ºC")
+    print("Extremos del 01/01/2024 al 10/01/2024:", min_temp, "ºC,", max_temp, "ºC")
 
-    # Devolver todas las temperaturas en un rango
+    # Listar temperaturas en rango
     print("Temperaturas del 01/01/2024 al 10/01/2024:")
-    temperaturas = db.devolver_temperaturas("01/01/2024", "10/01/2024")
-    for temp in temperaturas:
+    for temp in db.devolver_temperaturas("01/01/2024", "10/01/2024"):
         print(temp)
 
-    # Obtener la cantidad de muestras almacenadas
-    print("Cantidad de muestras almacenadas:", db.cantidad_muestras())
+    # Consultar cantidad de muestras
+    print("Cantidad de muestras:", db.cantidad_muestras())
 
-    # Borrar una temperatura
+    # Borrar una temperatura y verificar
     db.borrar_temperatura("05/01/2024")
-    print("Cantidad de muestras tras borrar 05/01/2024:", db.cantidad_muestras())
-
-    # Comprobar la temperatura después de borrar
+    print("Muestras tras borrar 05/01/2024:", db.cantidad_muestras())
     print("Temperatura del 05/01/2024 tras borrar:", db.devolver_temperatura("05/01/2024"))
 
 if __name__ == "__main__":
